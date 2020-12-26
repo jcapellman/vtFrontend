@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\Base\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\vtFrontend.lib\vtFrontend.lib.csproj" />
   </ItemGroup>
 
