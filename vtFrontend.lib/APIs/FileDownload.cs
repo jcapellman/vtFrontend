@@ -1,4 +1,6 @@
-﻿using vtFrontend.lib.APIs.Base;
+﻿using System.Threading.Tasks;
+
+using vtFrontend.lib.APIs.Base;
 using vtFrontend.lib.Objects;
 
 namespace vtFrontend.lib.APIs
@@ -9,9 +11,11 @@ namespace vtFrontend.lib.APIs
         {
         }
         
-        public override bool Run(string[] parameters)
+        public override async Task<bool> RunAsync(string[] parameters)
         {
-            
+            var result = await GetByteAsync($"files/{parameters[0]}/download");
+
+            return result != null && result.Length > 0;
         }
     }
 }
