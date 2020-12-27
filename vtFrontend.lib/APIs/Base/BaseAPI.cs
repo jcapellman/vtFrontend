@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 using vtFrontend.lib.Objects;
@@ -26,7 +27,21 @@ namespace vtFrontend.lib.APIs.Base
             return await httpClient.GetByteArrayAsync(
                 $"{VtBaseurl}{url}");
         }
-        
+
         public abstract Task<bool> RunAsync(BaseParameter[] parameters);
+        
+        public abstract string[] Parameters { get; }
+        
+        protected string GetParameterValue(string parameter, BaseParameter[] parameters)
+        {
+            if (parameters.Length == 0)
+            {
+                return null;
+            }
+
+            var result = parameters.FirstOrDefault(a => a.GetType().Name == parameter);
+
+            return result?.Value;
+        }
     }
 }
