@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using vtFrontend.lib.Objects;
+using vtFrontend.lib.Parameters.Base;
 
 namespace vtFrontend.lib.APIs.Base
 {
@@ -26,6 +27,6 @@ namespace vtFrontend.lib.APIs.Base
                 $"{VtBaseurl}{url}");
         }
         
-        public abstract Task<bool> RunAsync(string[] parameters);
+        public abstract Task<bool> RunAsync(BaseParameter[] parameters);
     }
 }

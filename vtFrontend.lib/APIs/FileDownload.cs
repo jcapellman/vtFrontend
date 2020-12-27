@@ -2,6 +2,7 @@
 
 using vtFrontend.lib.APIs.Base;
 using vtFrontend.lib.Objects;
+using vtFrontend.lib.Parameters.Base;
 
 namespace vtFrontend.lib.APIs
 {
@@ -11,9 +12,9 @@ namespace vtFrontend.lib.APIs
         {
         }
         
-        public override async Task<bool> RunAsync(string[] parameters)
+        public override async Task<bool> RunAsync(BaseParameter[] parameters)
         {
-            var result = await GetByteAsync($"files/{parameters[0]}/download");
+            var result = await GetByteAsync($"files/{parameters[0].Value}/download");
 
             return result != null && result.Length > 0;
         }
