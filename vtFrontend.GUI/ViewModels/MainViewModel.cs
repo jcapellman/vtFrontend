@@ -90,5 +90,18 @@ namespace vtFrontend.GUI.ViewModels
 
             ValidateForm();
         }
+
+        public void ResetFields()
+        {
+            foreach (var parameter in SelectedApi.Parameters)
+            {
+                parameter.Value = null;
+            }
+        }
+
+        public async void ExecuteApi()
+        {
+            var result = await SelectedApi.RunAsync();
+        }
     }
 }

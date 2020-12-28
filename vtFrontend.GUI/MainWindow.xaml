@@ -31,7 +31,7 @@
 
                 <Label Grid.Row="0" Style="{StaticResource ApiHeader}" Content="APIS" />
                 <TextBox Grid.Row="1" />
-                <ListView Grid.Row="2" ItemsSource="{Binding Apis, Mode=TwoWay}" SelectedItem="{Binding SelectedAPI}">
+                <ListView Grid.Row="2" ItemsSource="{Binding Apis, Mode=TwoWay}" SelectedItem="{Binding SelectedApi}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Label Content="{Binding Name}"></Label>
@@ -83,8 +83,8 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Content="Reset Fields" />
-                    <Button Grid.Column="1" Content="Execute API" HorizontalAlignment="Right" IsEnabled="{Binding EnableExecuteButton}" />
+                    <Button Grid.Column="0" Content="Reset Fields" Click="btnResetFields_OnClick" />
+                    <Button Grid.Column="1" Content="Execute API" Click="btnExecute_OnClick" HorizontalAlignment="Right" IsEnabled="{Binding EnableExecuteButton}" />
                 </Grid>
             </Grid>
         </Grid>
