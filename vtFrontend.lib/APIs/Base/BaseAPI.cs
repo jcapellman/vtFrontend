@@ -15,8 +15,8 @@ namespace vtFrontend.lib.APIs.Base
         
         private readonly SettingsItem _settings;
 
-        public static List<BaseAPI> GetApis() => typeof(BaseAPI).Assembly.GetTypes()
-            .Where(a => !a.IsAbstract && a.BaseType == typeof(BaseAPI)).Select(b => (BaseAPI) Activator.CreateInstance(b)).ToList();
+        public static List<BaseAPI> GetApis(SettingsItem settings) => typeof(BaseAPI).Assembly.GetTypes()
+            .Where(a => !a.IsAbstract && a.BaseType == typeof(BaseAPI)).Select(b => (BaseAPI) Activator.CreateInstance(b, args: new object[] { settings })).ToList();
         
         protected BaseAPI(SettingsItem settings)
         {
@@ -32,6 +32,8 @@ namespace vtFrontend.lib.APIs.Base
             return await httpClient.GetByteArrayAsync(
                 $"{VtBaseurl}{url}");
         }
+        
+        public abstract string Name { get; }
         
         public abstract Task<bool> RunAsync();
         
