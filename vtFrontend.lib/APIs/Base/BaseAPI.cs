@@ -16,7 +16,7 @@ namespace vtFrontend.lib.APIs.Base
         private readonly SettingsItem _settings;
 
         public static List<BaseAPI> GetApis(SettingsItem settings) => typeof(BaseAPI).Assembly.GetTypes()
-            .Where(a => !a.IsAbstract && a.BaseType == typeof(BaseAPI)).Select(b => (BaseAPI) Activator.CreateInstance(b, args: new object[] { settings })).ToList();
+            .Where(a => !a.IsAbstract && a.BaseType == typeof(BaseAPI)).Select(b => (BaseAPI) Activator.CreateInstance(b, args: new object[] { settings })).OrderBy(c => c?.Name).ToList();
         
         protected BaseAPI(SettingsItem settings)
         {
