@@ -60,7 +60,7 @@
                                 </Grid.RowDefinitions>
 
                                 <Label Grid.Row="0" Content="{Binding Label}" />
-                                <TextBox Grid.Row="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Grid.Row="1" TextChanged="Form_OnTextChanged" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             </Grid>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -84,7 +84,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0" Content="Reset Fields" />
-                    <Button Grid.Column="1" Content="Execute API" HorizontalAlignment="Right" />
+                    <Button Grid.Column="1" Content="Execute API" HorizontalAlignment="Right" IsEnabled="{Binding EnableExecuteButton}" />
                 </Grid>
             </Grid>
         </Grid>
@@ -98,7 +98,7 @@
 
             <Label Grid.Column="0" Content="VT Key" />
 
-            <TextBox Grid.Column="1" Margin="5,5,5,5" Text="{Binding Settings.VTKey,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Column="1" Margin="5,5,5,5" TextChanged="Form_OnTextChanged" Text="{Binding Settings.VTKey,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
     </Grid>
 </Window>

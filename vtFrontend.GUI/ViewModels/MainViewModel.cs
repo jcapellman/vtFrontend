@@ -50,6 +50,35 @@ namespace vtFrontend.GUI.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private bool _enableExecuteButton;
+
+        public bool EnableExecuteButton
+        {
+            get => _enableExecuteButton;
+
+            set
+            {
+                _enableExecuteButton = value;
+                
+                OnPropertyChanged();
+            }
+        }
+
+        public void ValidateForm()
+        {
+            var valid = !string.IsNullOrEmpty(Settings.VTKey);
+
+            foreach (var parameter in SelectedApi.Parameters)
+            {
+                if (parameter.IsRequired && string.IsNullOrEmpty(parameter.Value))
+                {
+                    valid = false;
+                }
+            }
+            
+            EnableExecuteButton = valid;
+        }
         
         public MainViewModel()
         {
@@ -58,6 +87,8 @@ namespace vtFrontend.GUI.ViewModels
             Apis = BaseAPI.GetApis(Settings);
 
             SelectedApi = Apis.FirstOrDefault();
+
+            ValidateForm();
         }
     }
 }

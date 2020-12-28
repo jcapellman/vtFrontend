@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 using vtFrontend.GUI.ViewModels;
 
@@ -11,6 +12,11 @@ namespace vtFrontend.GUI
             InitializeComponent();
 
             DataContext = new MainViewModel();
+        }
+
+        private void Form_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ((MainViewModel) DataContext).ValidateForm();
         }
     }
 }
