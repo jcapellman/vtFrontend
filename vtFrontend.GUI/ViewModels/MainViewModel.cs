@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using vtFrontend.GUI.ViewModels.Base;
 using vtFrontend.lib.APIs.Base;
 using vtFrontend.lib.Objects;
+using vtFrontend.lib.Parameters.Base;
 
 namespace vtFrontend.GUI.ViewModels
 {
@@ -85,12 +87,15 @@ namespace vtFrontend.GUI.ViewModels
             Settings = new SettingsItem();
             
             Apis = BaseAPI.GetApis(Settings);
+        }
 
+        public void Initialize()
+        {
             SelectedApi = Apis.FirstOrDefault();
 
             ValidateForm();
         }
-
+        
         public void ResetFields()
         {
             foreach (var parameter in SelectedApi.Parameters)
@@ -102,6 +107,23 @@ namespace vtFrontend.GUI.ViewModels
         public async void ExecuteApi()
         {
             var result = await SelectedApi.RunAsync();
+        }
+
+        public void UpdateParameter(BaseParameter parameter)
+        {
+            for (var x = 0; x < SelectedApi.Parameters.Length; x++)
+            {
+                if (SelectedApi.Parameters[x].Label != parameter.Label)
+                {
+                    continue;
+                }
+
+                _selectedApi.Parameters[x] = parameter;
+
+                break;
+            }
+            
+            ValidateForm();
         }
     }
 }
