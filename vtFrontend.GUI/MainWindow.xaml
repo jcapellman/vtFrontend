@@ -12,33 +12,24 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <Menu>
-                <MenuItem Header="File">
-                    <MenuItem Header="Exit" />
-                </MenuItem>
-            </Menu>
-        </Grid>
-
-        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="250" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" Style="{StaticResource GridApiListing}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Content="APIS" />
+                <Label Grid.Row="0" Style="{StaticResource ApiHeader}" Content="APIS" />
                 <TextBox Grid.Row="1" />
                 <ListView Grid.Row="2" ItemsSource="{Binding Apis, Mode=TwoWay}" SelectedItem="{Binding SelectedAPI}">
                     <ListView.ItemTemplate>
@@ -51,13 +42,13 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" MinHeight="150" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Content="{Binding SelectedApi.Name}" />
+                <Label Grid.Row="0" Style="{StaticResource ApiHeader}" Content="{Binding SelectedApi.Name}" />
 
                 <ListView Grid.Row="1" ItemsSource="{Binding SelectedApi.Parameters}">
                     <ListView.ItemTemplate>
@@ -75,18 +66,18 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Grid Grid.Row="2">
+                <Grid Grid.Row="2" Style="{StaticResource GridOutput}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0" Content="API Output" />
+                    <Label Grid.Row="0" Style="{StaticResource SubSectionHeader}" Content="API Output" />
 
                     <TextBox Grid.Row="1" />
                 </Grid>
 
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="3" Style="{StaticResource GridActionFooter}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
@@ -98,7 +89,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="1" Style="{StaticResource GridFooter}">
 
         </Grid>
     </Grid>
