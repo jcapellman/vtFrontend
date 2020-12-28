@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:vtFrontend.GUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+         <ResourceDictionary Source="Styles/MainWindowStyle.xaml" />
     </Application.Resources>
 </Application>
