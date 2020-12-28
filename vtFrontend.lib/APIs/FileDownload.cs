@@ -15,6 +15,8 @@ namespace vtFrontend.lib.APIs
 
         public override BaseParameter[] Parameters => new[] { new FileHash() };
 
+        public override string Name => "File Downloader";
+
         public override async Task<bool> RunAsync()
         {
             var hash = GetParameterValue(typeof(FileHash));

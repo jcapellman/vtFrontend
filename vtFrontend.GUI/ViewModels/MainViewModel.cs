@@ -52,7 +52,9 @@ namespace vtFrontend.GUI.ViewModels
         
         public MainViewModel()
         {
-            Apis = BaseAPI.GetApis();
+            Settings = new SettingsItem();
+            
+            Apis = BaseAPI.GetApis(Settings);
         }
     }
 }
