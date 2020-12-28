@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -28,18 +29,18 @@ namespace vtFrontend.lib.APIs.Base
                 $"{VtBaseurl}{url}");
         }
 
-        public abstract Task<bool> RunAsync(BaseParameter[] parameters);
+        public abstract Task<bool> RunAsync();
         
-        public abstract string[] Parameters { get; }
+        public abstract BaseParameter[] Parameters { get; }
         
-        protected string GetParameterValue(string parameter, BaseParameter[] parameters)
+        protected string GetParameterValue(Type parameter)
         {
-            if (parameters.Length == 0)
+            if (Parameters.Length == 0)
             {
                 return null;
             }
 
-            var result = parameters.FirstOrDefault(a => a.GetType().Name == parameter);
+            var result = Parameters.FirstOrDefault(a => a.GetType() == parameter);
 
             return result?.Value;
         }

@@ -13,11 +13,11 @@ namespace vtFrontend.lib.APIs
         {
         }
 
-        public override string[] Parameters => new[] {nameof(FileHash)};
+        public override BaseParameter[] Parameters => new[] { new FileHash() };
 
-        public override async Task<bool> RunAsync(BaseParameter[] parameters)
+        public override async Task<bool> RunAsync()
         {
-            var hash = GetParameterValue(nameof(FileHash), parameters);
+            var hash = GetParameterValue(typeof(FileHash));
             
             var result = await GetByteAsync($"files/{hash}/download");
 
