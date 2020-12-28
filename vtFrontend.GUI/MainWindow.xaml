@@ -40,13 +40,61 @@
 
                 <Label Grid.Row="0" Content="APIS" />
                 <TextBox Grid.Row="1" />
-                <ListView Grid.Row="2" ItemsSource="{Binding Apis}" SelectedItem="{Binding SelectedAPI}">
+                <ListView Grid.Row="2" ItemsSource="{Binding Apis, Mode=TwoWay}" SelectedItem="{Binding SelectedAPI}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Label Content="{Binding Name}"></Label>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" MinHeight="150" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="{Binding SelectedApi.Name}" />
+
+                <ListView Grid.Row="1" ItemsSource="{Binding SelectedApi.Parameters}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Content="{Binding Label}" />
+                                <TextBox Grid.Row="1" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content="API Output" />
+
+                    <TextBox Grid.Row="1" />
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Content="Reset Fields" />
+                    <Button Grid.Column="1" Content="Execute API" HorizontalAlignment="Right" />
+                </Grid>
             </Grid>
         </Grid>
 

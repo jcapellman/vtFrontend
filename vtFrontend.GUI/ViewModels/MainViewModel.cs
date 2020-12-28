@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using vtFrontend.GUI.ViewModels.Base;
 using vtFrontend.lib.APIs.Base;
@@ -55,6 +56,8 @@ namespace vtFrontend.GUI.ViewModels
             Settings = new SettingsItem();
             
             Apis = BaseAPI.GetApis(Settings);
+
+            SelectedApi = Apis.FirstOrDefault();
         }
     }
 }
