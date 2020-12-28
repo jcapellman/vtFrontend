@@ -14,8 +14,10 @@ namespace vtFrontend.GUI
             InitializeComponent();
 
             DataContext = new MainViewModel();
+            
+            Vm.Initialize();
         }
-
+        
         private void Form_OnTextChanged(object sender, TextChangedEventArgs e) => Vm.ValidateForm();
 
         private void btnResetFields_OnClick(object sender, RoutedEventArgs e) => Vm.ResetFields();
